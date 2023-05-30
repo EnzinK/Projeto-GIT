@@ -1,0 +1,37 @@
+# Projeto em andamento de um sistema que armazena arquivos do tipo Música e do tipo Podcast (similar ao Spotify)
+class Arquivo:
+    def __init__(self, nome, duracao):
+        self._nome = nome.title()
+        self.duracao = duracao
+        self._visualizacoes = 0
+        
+    @property
+    def visualizacoes(self):
+        return self._visualizacoes
+
+    def visualizar(self):
+        self._visualizacoes += 1
+
+    @property
+    def nome(self):
+        return self._nome
+
+    @nome.setter
+    def nome(self, nome):
+        self._nome = nome
+
+
+class Musica(Arquivo):
+    def __init__(self, nome, duracao, artista, album):
+        super().__init__(nome, duracao)
+        self.artista = artista.title()
+        self.album = album
+    def __str__(self):
+        return f'Nome: {self._nome} -  Duração: {self.duracao} - Artista: {self.artista} - Álbum: {self.album}'
+
+class Podcast(Arquivo):
+    def __init__(self, nome, duracao, autor):
+        super().__init__(nome, duracao)
+        self.autor = autor
+    def __str__(self):
+        return f'Nome: {self._nome} -  Duração: {self.duracao} - Autor: {self.autor}'
